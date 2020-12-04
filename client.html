@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Demo Create and Consume Simple REST API in PHP</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+<div style="width:700px; margin:0 auto;">
+
+<h3>Demo Consume Simple REST API in PHP</h3>   
+<form action="" method="POST">
+<label>Enter ID:</label><br />
+<input type="text" name="id" placeholder="Enter ID" required/>
+<br/><br/>
+<input type="submit" name="submit"/>
+<br/><br/><br/>
+</form>    
+
+<?php
+if (isset($_POST['id']) && $_POST['id']!="")
+ {
+	$id = $_POST['id'];
+	$url = "http://localhost/rest/api/".$id;
+	
+	$client = curl_init($url);
+	curl_setopt($client,CURLOPT_RETURNTRANSFER,true);
+	$response = curl_exec($client);
+	
+	$result = json_decode($response);
+	
+	
+}
+    ?>
+<br/>
+<b>Sample IDs for Demo:</b><br/>
+1<br/>
+2<br/>
+
+
+<br/><br/>
+</div>
+</body>
+</html>
