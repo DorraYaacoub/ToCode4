@@ -1,0 +1,28 @@
+<html>
+<head>
+ <title>Send HTTP POST Request using PHP</title>
+ <script src="https://code.jquery.com/jquery-latest.js"></script>
+	<script>
+	  function submit_soap(){
+		var key1=$("#key1").val();
+		var key2=$("#key2").val();
+		$.post("form_post.php",{key1:key1,key2:key2},
+		function(data){
+		  $("#json_response").html(data);
+		});
+	}
+	</script>
+</head>
+<body>
+  <center>
+    <h3>Send HTTP POST Request using PHP</h3>
+     <form>
+     key1 : <input name="key1" id="key1" type="text" /><br />
+     key2  : <input name="key2" id="key2" type="text" /><br />
+      <input type="button" value="Submit" onclick="submit_soap()"/>
+    </form>
+       <br>-----------
+	  <div id="json_response"></div>
+   </center>
+</body>
+</html>
